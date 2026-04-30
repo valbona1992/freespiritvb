@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Free Spirit VB</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ---- ABOUT-SPECIFIC ---- */
+    .about-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img-wrap .img-zoom { aspect-ratio: 3/4; }
+    .about-img-wrap .img-zoom img { width:100%;height:100%;object-fit:cover; }
+    .about-frame { position:absolute;bottom:-1.8rem;right:-1.8rem;width:68%;height:68%;border:1px solid var(--border);z-index:-1; }
+    .about-text p { font-size:.93rem;line-height:1.9;color:var(--text-muted);margin-bottom:1.4rem; }
+
+    /* Values */
+    .values-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--stone-light);border:1px solid var(--stone-light); }
+    .value-card { background:var(--warm-white);padding:3.5rem 2.5rem;transition:background .3s; }
+    .value-card:hover { background:var(--off-white); }
+    .value-num { font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:var(--stone-light);line-height:1;display:block;margin-bottom:1rem;transition:color .3s; }
+    .value-card:hover .value-num { color:var(--gold);opacity:.4; }
+    .value-title { font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--black);margin-bottom:.8rem; }
+    .value-desc { font-size:.83rem;line-height:1.8;color:var(--text-muted);font-weight:300; }
+
+    /* Timeline */
+    .timeline { max-width:580px;margin:0 auto; }
+    .tl-item { display:flex;gap:2.5rem;padding-bottom:3.5rem;position:relative; }
+    .tl-item:last-child { padding-bottom:0; }
+    .tl-left { display:flex;flex-direction:column;align-items:center; }
+    .tl-dot { width:8px;height:8px;background:var(--gold);border:1px solid var(--gold);flex-shrink:0;margin-top:5px; }
+    .tl-line { width:1px;flex:1;background:var(--stone-light);margin-top:8px; }
+    .tl-year { font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.5rem; }
+    .tl-title { font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:var(--black);margin-bottom:.6rem; }
+    .tl-text { font-size:.82rem;line-height:1.9;color:var(--text-muted);font-weight:300; }
+
+    /* Stats */
+    .stats-bar { display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--stone-light); }
+    .stat-box { padding:3rem 2rem;text-align:center;border-right:1px solid var(--stone-light); }
+    .stat-box:last-child { border-right:none; }
+    .stat-n { font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:300;color:var(--black);line-height:1; }
+    .stat-n sup { font-size:1.3rem;color:var(--gold); }
+    .stat-l { font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-top:.5rem; }
+
+    @media (max-width:1024px) {
+      .about-intro { grid-template-columns:1fr;gap:3.5rem; }
+      .about-frame { display:none; }
+    }
+    @media (max-width:768px) {
+      .values-grid { grid-template-columns:1fr; }
+      .stats-bar { grid-template-columns:repeat(2,1fr); }
+      .stat-box:nth-child(2) { border-right:none; }
+      .stat-box:nth-child(1),.stat-box:nth-child(2) { border-bottom:1px solid var(--stone-light); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <nav id="nav" class="nav-light">
+    <a href="index.html" class="nav-logo">Free Spirit <span class="accent">VB</span></a>
+    <div class="nav-links">
+      <a href="about.html" class="active">About</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="journal.html">Journal</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </div>
+    <button class="menu-btn" id="menu-btn"><span></span><span></span></button>
+  </nav>
+
+  <div id="mobile-menu">
+    <button id="mob-close" class="mob-close">✕</button>
+    <a href="about.html">About</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="journal.html">Journal</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1800&q=80');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content container">
+      <span class="eyebrow">The Story</span>
+      <h1 class="section-title" style="color:#fff;font-size:clamp(3rem,8vw,7rem);">About <em>Valbona</em></h1>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="about-intro">
+        <div class="about-img-wrap reveal">
+          <div class="img-zoom"><img src="https://images.unsplash.com/photo-1500835556837-99ac94a94552?w=900&q=85" alt="Valbona" loading="lazy"/></div>
+          <div class="about-frame"></div>
+        </div>
+        <div class="reveal rv1">
+          <span class="eyebrow">Who I Am</span>
+          <h2 class="section-title">A traveler, photographer <em>& storyteller</em></h2>
+          <span class="gold-line"></span>
+          <div class="about-text">
+            <p>I'm Valbona — a naturopathic doctor turned full-time travel storyteller, based in Chicago. Travel has always been my second language; I've been speaking it fluently since my first solo trip through Europe in 2014.</p>
+            <p>I believe the best travel experiences come from genuine connections with locals and immersing yourself in their culture — not ticking off tourist checkboxes. My goal is to show you a world that's richer, more welcoming, and more surprising than any guidebook lets on.</p>
+            <p>Empowering women to explore confidently and safely on their own terms has become the heart of everything I do. Breaking stereotypes. Discovering hidden hospitality. Coming home changed.</p>
+          </div>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+            <a href="destinations.html" class="btn btn-gold">Explore Destinations</a>
+            <a href="contact.html" class="btn btn-outline">Work With Me</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar reveal">
+    <div class="stat-box"><div class="stat-n">40<sup>+</sup></div><div class="stat-l">Countries</div></div>
+    <div class="stat-box"><div class="stat-n">150<sup>+</sup></div><div class="stat-l">Destinations</div></div>
+    <div class="stat-box"><div class="stat-n">50K<sup>+</sup></div><div class="stat-l">Community</div></div>
+    <div class="stat-box"><div class="stat-n">8<sup>+</sup></div><div class="stat-l">Years Traveling</div></div>
+  </div>
+
+  <!-- VALUES -->
+  <section class="section-pad bg-off">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
+        <span class="eyebrow">What I Stand For</span>
+        <h2 class="section-title">My Travel <em>Philosophy</em></h2>
+      </div>
+      <div class="values-grid reveal">
+        <div class="value-card">
+          <span class="value-num">01</span>
+          <div class="value-title">Authentic Experiences</div>
+          <p class="value-desc">Real travel means going beyond the tourist trail — eating where locals eat, staying in family guesthouses, and letting serendipity be your guide.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-num">02</span>
+          <div class="value-title">Cultural Respect</div>
+          <p class="value-desc">Every destination deserves a traveler who listens first, learns the customs, and leaves places better than they found them.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-num">03</span>
+          <div class="value-title">Female Empowerment</div>
+          <p class="value-desc">Solo female travel is one of the most liberating acts of self-discovery. I'm here to make it more accessible, safer, and more joyful for every woman.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section-pad">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:4rem;" class="reveal">
+        <span class="eyebrow">The Journey</span>
+        <h2 class="section-title">How It All <em>Began</em></h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div><span class="tl-year">2014</span><div class="tl-title">First Solo Adventure</div><p class="tl-text">What began as a solo trip to Europe turned into a life-changing journey that ignited a deep passion for authentic travel and reshaped how I saw the world.</p></div>
+        </div>
+        <div class="tl-item reveal rv1">
+          <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div><span class="tl-year">2016</span><div class="tl-title">Started Travel Consulting</div><p class="tl-text">Having visited over 15 countries, I began helping friends plan adventures. Casual advice grew into a full consulting service — and people kept coming back.</p></div>
+        </div>
+        <div class="tl-item reveal rv2">
+          <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div><span class="tl-year">2019</span><div class="tl-title">Launched Free Spirit VB</div><p class="tl-text">I launched this platform to share my travel stories, photography, and lessons from the road. A personal blog grew into a community of thousands.</p></div>
+        </div>
+        <div class="tl-item reveal rv3">
+          <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div><span class="tl-year">2022</span><div class="tl-title">Expanded into Digital Products</div><p class="tl-text">After countless requests, I created Lightroom presets and travel planning templates — every product comes from personal experience and years on the road.</p></div>
+        </div>
+        <div class="tl-item reveal rv4">
+          <div class="tl-left"><div class="tl-dot"></div></div>
+          <div><span class="tl-year">2024</span><div class="tl-title">Group Trips Coming Soon</div><p class="tl-text">From ancient Silk Road cities to Patagonian wilderness — carefully crafted group adventures for the modern explorer. <span style="color:var(--gold);font-style:italic;">Coming Q2 2024.</span></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-pad bg-off">
+    <div class="container" style="max-width:720px;">
+      <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
+        <span class="eyebrow">Questions</span>
+        <h2 class="section-title">Frequently <em>Asked</em></h2>
+      </div>
+      <div class="reveal">
+        <div class="faq-item">
+          <button class="faq-btn" data-faq="1"><span class="faq-question">Do you offer travel consulting services?</span><span class="faq-icon" id="faq-icon-1">+</span></button>
+          <div id="faq-1" class="faq-body"><div><p>Yes! I offer one-on-one travel consulting calls where we discuss your upcoming trip, review your itinerary, and I share insider tips based on your interests and travel style.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" data-faq="2"><span class="faq-question">Do you accept guest posts?</span><span class="faq-icon" id="faq-icon-2">+</span></button>
+          <div id="faq-2" class="faq-body"><div><p>I occasionally feature guest posts from fellow travelers with unique perspectives. Reach out through the contact page with your pitch — I love featuring diverse voices in the community.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" data-faq="3"><span class="faq-question">Can I invite you to visit my destination?</span><span class="faq-icon" id="faq-icon-3">+</span></button>
+          <div id="faq-3" class="faq-body"><div><p>I'm open to press trips and partnerships that align with my values of authentic travel, cultural respect, and sustainable tourism. Use the contact page to get in touch.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" data-faq="4"><span class="faq-question">How quickly do you respond to messages?</span><span class="faq-icon" id="faq-icon-4">+</span></button>
+          <div id="faq-4" class="faq-body"><div><p>I typically respond within 24–48 hours. During active travel periods response times may be slightly longer — I appreciate your patience.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter-strip reveal">
+    <div class="container">
+      <span class="eyebrow" style="color:var(--gold);">Stay in the Loop</span>
+      <h2 class="section-title" style="color:#fff;margin-bottom:.8rem;">Join the <em>Adventure</em></h2>
+      <p>Travel tips, destination guides, and exclusive resources delivered to your inbox.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" />
+        <button type="button">Subscribe</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="footer-logo">Free Spirit <span class="accent">VB</span></a>
+          <p class="footer-desc">Inspiring adventures, one destination at a time. Authentic travel stories, curated guides, and resources for the modern explorer.</p>
+        </div>
+        <div>
+          <div class="footer-heading">Explore</div>
+          <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="journal.html">Journal</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Follow Along</div>
+          <div class="footer-links">
+            <a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">YouTube</a><a href="#">Facebook</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2024 Free Spirit VB. All rights reserved.</p>
+        <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Affiliate Disclosure</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

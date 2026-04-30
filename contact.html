@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Free Spirit VB</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .contact-grid { display:grid;grid-template-columns:5fr 7fr;gap:8rem;align-items:start; }
+    .contact-info-item { display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:2.5rem; }
+    .contact-icon { width:44px;height:44px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+    .contact-icon svg { width:17px;height:17px;stroke:var(--gold); }
+    .contact-label { font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:.3rem; }
+    .contact-value { font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--black); }
+
+    /* Form */
+    .form-row { display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem; }
+    .form-group { margin-bottom:1.5rem; }
+    label { display:block;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.6rem; }
+    input, select, textarea {
+      width:100%;padding:.9rem 1rem;
+      background:var(--off-white);border:1px solid var(--stone-light);
+      font-family:'Jost',sans-serif;font-size:.85rem;font-weight:300;
+      color:var(--text);outline:none;
+      transition:border-color .3s;
+      -webkit-appearance:none;border-radius:0;
+    }
+    input:focus, select:focus, textarea:focus { border-color:var(--gold); }
+    input::placeholder, textarea::placeholder { color:var(--stone); }
+    textarea { resize:none; }
+    .submit-note { font-size:.72rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.5rem; }
+
+    /* Social row */
+    .social-row { display:flex;gap:1rem;margin-top:3rem; }
+    .social-btn {
+      width:44px;height:44px;border:1px solid var(--stone-light);
+      display:flex;align-items:center;justify-content:center;
+      transition:all .3s;cursor:none;
+    }
+    .social-btn:hover { border-color:var(--gold);background:var(--gold); }
+    .social-btn svg { width:16px;height:16px;stroke:var(--text-muted);transition:stroke .3s; }
+    .social-btn:hover svg { stroke:#fff; }
+
+    /* Map placeholder */
+    .map-strip {
+      background:var(--stone-light);
+      display:flex;align-items:center;justify-content:center;
+      height:340px;
+      position:relative;overflow:hidden;
+    }
+    .map-strip img { width:100%;height:100%;object-fit:cover;opacity:.5; }
+    .map-label {
+      position:absolute;
+      font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;
+      color:var(--black);
+      background:rgba(250,248,245,.9);
+      padding:1rem 2rem;
+    }
+
+    @media (max-width:1024px) { .contact-grid { grid-template-columns:1fr;gap:4rem; } }
+    @media (max-width:768px) { .form-row { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <nav id="nav" class="nav-light">
+    <a href="index.html" class="nav-logo">Free Spirit <span class="accent">VB</span></a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="journal.html">Journal</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html" class="active nav-cta">Contact</a>
+    </div>
+    <button class="menu-btn" id="menu-btn"><span></span><span></span></button>
+  </nav>
+
+  <div id="mobile-menu">
+    <button id="mob-close" class="mob-close">✕</button>
+    <a href="about.html">About</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="journal.html">Journal</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=1800&q=80');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content container">
+      <span class="eyebrow">Let's Talk</span>
+      <h1 class="section-title" style="color:#fff;font-size:clamp(3rem,8vw,7rem);">Get in <em>Touch</em></h1>
+    </div>
+  </header>
+
+  <!-- CONTACT SECTION -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Left: Info -->
+        <div class="reveal">
+          <span class="eyebrow">Reach Out</span>
+          <h2 class="section-title" style="font-size:clamp(2rem,3.5vw,3rem);">Let's <em>Connect</em></h2>
+          <span class="gold-line"></span>
+          <p class="lead" style="margin-bottom:3rem;">Whether you need destination recommendations, a custom itinerary, want to collaborate, or simply want to chat about wanderlust — I'd love to hear from you.</p>
+
+          <div class="contact-info-item">
+            <div class="contact-icon">
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <span class="contact-label">Email</span>
+              <div class="contact-value">hello@freespiritvb.com</div>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon">
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <span class="contact-label">Based In</span>
+              <div class="contact-value">Chicago, Illinois, USA</div>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon">
+              <svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="1.5"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6l4 2"/></svg>
+            </div>
+            <div>
+              <span class="contact-label">Response Time</span>
+              <div class="contact-value">Within 24–48 hours</div>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon">
+              <svg fill="none" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke-width="1.5"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <span class="contact-label">Instagram</span>
+              <div class="contact-value">@freespiritvb</div>
+            </div>
+          </div>
+
+          <div class="social-row">
+            <!-- Instagram -->
+            <a href="#" class="social-btn" aria-label="Instagram">
+              <svg fill="none" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke-width="1.5"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2" stroke-linecap="round"/></svg>
+            </a>
+            <!-- Pinterest -->
+            <a href="#" class="social-btn" aria-label="Pinterest">
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2C6.477 2 2 6.477 2 12c0 4.236 2.636 7.855 6.356 9.312-.088-.791-.167-2.005.035-2.868.181-.78 1.172-4.97 1.172-4.97s-.299-.598-.299-1.482c0-1.388.806-2.428 1.808-2.428.852 0 1.265.64 1.265 1.408 0 .858-.546 2.14-.828 3.33-.236.995.499 1.806 1.476 1.806 1.772 0 3.138-1.867 3.138-4.562 0-2.386-1.714-4.054-4.16-4.054-2.832 0-4.493 2.124-4.493 4.32 0 .856.33 1.772.741 2.273a.3.3 0 01.069.286c-.076.315-.245 1 -.278 1.139-.045.187-.15.226-.345.136-1.249-.581-2.03-2.407-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.473 6.165 5.776 0 3.447-2.173 6.22-5.19 6.22-1.013 0-1.966-.527-2.292-1.148l-.623 2.378c-.226.869-.835 1.958-1.244 2.621.937.29 1.931.446 2.962.446 5.522 0 10-4.477 10-10S17.522 2 12 2z"/></svg>
+            </a>
+            <!-- YouTube -->
+            <a href="#" class="social-btn" aria-label="YouTube">
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+            </a>
+            <!-- Facebook -->
+            <a href="#" class="social-btn" aria-label="Facebook">
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="reveal rv1">
+          <div class="form-row">
+            <div>
+              <label>Name</label>
+              <input type="text" placeholder="Your name" />
+            </div>
+            <div>
+              <label>Email</label>
+              <input type="email" placeholder="your@email.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" placeholder="What's this about?" />
+          </div>
+          <div class="form-group">
+            <label>Inquiry Type</label>
+            <select>
+              <option value="">Select an option</option>
+              <option>Custom Itinerary</option>
+              <option>Travel Consulting</option>
+              <option>Brand Partnership</option>
+              <option>Press / Media</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea rows="6" placeholder="Tell me about your travel dreams, your destination, your dates…"></textarea>
+          </div>
+          <p class="submit-note">I read every message personally and respond within 24–48 hours. For brand partnerships and press inquiries, please select the appropriate inquiry type above.</p>
+          <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;" id="submit-btn">Send Message</button>
+          <div id="form-success" style="display:none;margin-top:1.5rem;padding:1.2rem 1.5rem;border:1px solid var(--gold);background:rgba(184,151,90,.06);">
+            <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--black);">Message sent! <em>I'll be in touch soon.</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP STRIP -->
+  <div class="map-strip">
+    <img src="https://images.unsplash.com/photo-1524813686514-a57563d77965?w=1800&q=70" alt="Chicago" loading="lazy"/>
+    <div class="map-label">Chicago, Illinois</div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="section-pad bg-off">
+    <div class="container" style="max-width:720px;">
+      <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
+        <span class="eyebrow">Quick Answers</span>
+        <h2 class="section-title">Before You <em>Reach Out</em></h2>
+      </div>
+      <div class="reveal">
+        <div class="faq-item">
+          <button class="faq-btn" data-faq="1"><span class="faq-question">How quickly will you respond?</span><span class="faq-icon" id="faq-icon-1">+</span></button>
+          <div id="faq-1" class="faq-body"><div><p>I personally read and respond to every message within 24–48 hours. During active travel periods it may take slightly longer — I appreciate your patience.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" data-faq="2"><span class="faq-question">What information should I include for an itinerary request?</span><span class="faq-icon" id="faq-icon-2">+</span></button>
+          <div id="faq-2" class="faq-body"><div><p>The more detail the better! Include your destination(s), travel dates, number of travelers, budget range, interests, and any must-see places or experiences. This helps me create something truly tailored to you.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" data-faq="3"><span class="faq-question">Do you offer refunds on digital products?</span><span class="faq-icon" id="faq-icon-3">+</span></button>
+          <div id="faq-3" class="faq-body"><div><p>Due to the digital nature of my products, all sales are final. However, if you experience a technical issue or are genuinely unsatisfied, please reach out and I'll do my best to make it right.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" data-faq="4"><span class="faq-question">Are you available for press trips or destination partnerships?</span><span class="faq-icon" id="faq-icon-4">+</span></button>
+          <div id="faq-4" class="faq-body"><div><p>Yes! I'm selective about partnerships to ensure they align with my values of authentic travel and cultural respect. Reach out with your proposal and I'll review it personally.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" data-faq="5"><span class="faq-question">Can I follow you on social media?</span><span class="faq-icon" id="faq-icon-5">+</span></button>
+          <div id="faq-5" class="faq-body"><div><p>Absolutely — find me @freespiritvb on Instagram and Pinterest, where I share daily travel inspiration, behind-the-scenes moments, and destination previews.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter-strip reveal">
+    <div class="container">
+      <span class="eyebrow" style="color:var(--gold);">Stay Connected</span>
+      <h2 class="section-title" style="color:#fff;margin-bottom:.8rem;">Join the <em>Adventure</em></h2>
+      <p>Travel guides, destination tips, and exclusive resources — straight to your inbox.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" />
+        <button type="button">Subscribe</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="footer-logo">Free Spirit <span class="accent">VB</span></a>
+          <p class="footer-desc">Inspiring adventures, one destination at a time. Authentic travel stories, curated guides, and resources for the modern explorer.</p>
+        </div>
+        <div>
+          <div class="footer-heading">Explore</div>
+          <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="journal.html">Journal</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Follow Along</div>
+          <div class="footer-links">
+            <a href="#">Instagram</a>
+            <a href="#">Pinterest</a>
+            <a href="#">YouTube</a>
+            <a href="#">Facebook</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2024 Free Spirit VB. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Affiliate Disclosure</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    // Fake form submission
+    document.getElementById('submit-btn').addEventListener('click', () => {
+      document.getElementById('form-success').style.display = 'block';
+      document.getElementById('submit-btn').textContent = 'Message Sent ✓';
+      document.getElementById('submit-btn').style.background = 'var(--black)';
+      document.getElementById('submit-btn').style.borderColor = 'var(--black)';
+    });
+  </script>
+</body>
+</html>

@@ -187,7 +187,7 @@ h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
   border: 1px solid rgba(255,255,255,.35);
   padding: .6rem 1.4rem;
   transition: all .3s;
-  cursor: none;
+  
 }
 .nav-cta:hover { background: #fff; color: var(--black) !important; }
 .nav-cta::after { display: none !important; }
@@ -195,7 +195,7 @@ h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
 /* Mobile menu btn */
 .menu-btn {
   display: none; flex-direction: column; gap: 5px;
-  background: none; border: none; cursor: none; padding: 4px;
+  background: none; border: none;  padding: 4px;
 }
 .menu-btn span { display: block; width: 22px; height: 1px; background: #fff; transition: all .3s; }
 #mobile-menu {
@@ -214,7 +214,7 @@ h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
 #mobile-menu a:hover { color: var(--gold); }
 #mobile-menu .mob-close {
   position: absolute; top: 2rem; right: 2rem;
-  font-size: 1.5rem; color: var(--text-muted); cursor: none;
+  font-size: 1.5rem; color: var(--text-muted); 
   background: none; border: none;
 }
 
@@ -250,7 +250,7 @@ h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
   letter-spacing: .2em;
   text-transform: uppercase;
   padding: .95rem 2.2rem;
-  cursor: none;
+
   transition: all .35s cubic-bezier(.16,1,.3,1);
 }
 .btn-gold  { background: var(--gold); color: #fff; border: 1px solid var(--gold); }
@@ -297,7 +297,7 @@ h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
   padding: .95rem 1.8rem;
   font-family: 'Jost', sans-serif; font-size: .6rem;
   letter-spacing: .2em; text-transform: uppercase; font-weight: 400;
-  cursor: none; transition: background .3s; white-space: nowrap;
+ transition: background .3s; white-space: nowrap;
 }
 .newsletter-form button:hover { background: var(--gold-light); }
 
@@ -340,7 +340,7 @@ footer {
 .faq-item:first-child { border-top: 1px solid var(--stone-light); }
 .faq-btn {
   width: 100%; display: flex; align-items: center; justify-content: space-between;
-  padding: 1.8rem 0; background: none; border: none; cursor: none; text-align: left;
+  padding: 1.8rem 0; background: none; border: none; text-align: left;
 }
 .faq-question { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; color: var(--black); }
 .faq-icon { font-size: 1.2rem; color: var(--gold); transition: transform .3s; flex-shrink: 0; margin-left: 2rem; font-weight: 300; }

@@ -4,30 +4,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ===== CUSTOM CURSOR =====
-  const cursor = document.getElementById('cursor');
-  const ring   = document.getElementById('cursor-ring');
-  if (cursor && ring) {
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top  = e.clientY + 'px';
-      setTimeout(() => {
-        ring.style.left = e.clientX + 'px';
-        ring.style.top  = e.clientY + 'px';
-      }, 60);
-    });
-    document.querySelectorAll('a, button, [role="button"]').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.width = '14px'; cursor.style.height = '14px';
-        ring.style.width = '48px'; ring.style.height = '48px';
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.width = '8px'; cursor.style.height = '8px';
-        ring.style.width = '34px'; ring.style.height = '34px';
-      });
-    });
-  }
-
   // ===== NAV SCROLL =====
   const nav = document.getElementById('nav');
   if (nav) {
